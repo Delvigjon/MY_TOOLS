@@ -30,6 +30,6 @@ User.create(
 
 User.create(
   name: "Jonathan",
-  email: "delvigjon@hotmail.fr",
+  email: "dlevigjon@hotmail.fr",
   password: "password"
 )

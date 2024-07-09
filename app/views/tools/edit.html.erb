@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Modifier l'annonce</h1>
+  <%= form_with(model: @tool, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Enregistrer' %>
+      <%= link_to "Supprimer cette annonce", @tool, method: :delete, class: "btn btn-outline-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette annonce ?" } %>
+    </div>
+  <% end %>
+</div>
