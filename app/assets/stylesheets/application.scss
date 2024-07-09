@@ -10,3 +10,59 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background-color: beige;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
+  height: 200px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.link-styled {
+  display: block;
+  padding: 10px 20px;
+  border: 2px solid #3498db; /* Bordure épaisse avec une couleur moderne */
+  border-radius: 5px;
+  background-color: #3498db; /* Couleur de fond */
+  color: #ffffff; /* Texte blanc */
+  text-decoration: none;
+  text-align: center;
+  margin: 0 auto;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.link-styled:hover {
+  background-color: #2980b9; /* Couleur de fond au survol */
+  border-color: #2980b9; /* Bordure au survol */
+}
+
