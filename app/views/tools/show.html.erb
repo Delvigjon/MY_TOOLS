@@ -1,20 +1,21 @@
+<!-- app/views/tools/show.html.erb (ou une autre vue appropriée) -->
 <div class="container">
   <div class="row">
     <div class="col">
-     
-      
       <div class="row mt-4 justify-content-center">
         <div class="col-md-8 mb-4">
           <div class="card" id="card">
-         
+            <% if @tool.image.present? %>
+              <%= image_tag @tool.image.url, class: 'card-img-top' %>
+            <% end %>
             <div class="card-body p-0">
               <div class="px-3 py-2">
                 <p><strong>Description :</strong> <%= @tool.description %></p>
                 <p><strong>Ville :</strong> <%= @tool.city %></p>
-                <%#= link_to 'Modifier', edit_tool_path(@tool), class: 'btn btn-outline-secondary btn-sm w-100 mt-4', title: 'Modifier', data: { toggle: 'tooltip' } %>
               </div>
             </div>
-             <%= link_to 'Retour à la liste des outils', tools_path, class: 'btn btn btn-warning btn-sm w-100 mt-4' %>
+            <%= link_to 'Nouvelle location', new_booking_path, class: 'btn btn-success btn-sm w-100 mt-4' %>
+            <%= link_to 'Retour à la liste des outils', tools_path, class: 'btn btn-warning btn-sm w-100 mt-4' %>
           </div>
         </div>
       </div>
