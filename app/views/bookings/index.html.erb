@@ -1,0 +1,21 @@
+<div class="container">
+<h1 class="my-4">Mes Locations</h1>
+
+<div class="list-group">
+  <% @bookings.each do |booking| %>
+    <div class="list-group-item">
+      <h5 class="mb-1">Outil: <%= booking.tool.name %></h5>
+      <p class="mb-1">Du: <%= booking.start_date %> au <%= booking.end_date %></p>
+      <div class="btn-group" role="group">
+        <%= link_to 'Voir', booking, class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Éditer', edit_booking_path(booking), class: 'btn btn-warning btn-sm' %>
+        <%= link_to 'Supprimer', booking, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="my-4">
+  <%= link_to 'Nouvelle Location', new_booking_path, class: 'btn btn-success' %>
+</div>
+</div>
