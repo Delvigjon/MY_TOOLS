@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require "Faker"
+require "faker"
 
 User.create(
   name: "Fred",
