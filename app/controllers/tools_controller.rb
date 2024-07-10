@@ -15,6 +15,7 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     @tool.user = current_user
+
     if @tool.save
       redirect_to tools_path, notice: "L'annonce a été créée avec succès."
     else
@@ -34,7 +35,6 @@ class ToolsController < ApplicationController
   end
 
   def destroy
-    @tool = Tool.find(params[:id])
     @tool.destroy
     redirect_to tools_path, notice: "L'annonce a été supprimée avec succès."
   end
@@ -46,6 +46,6 @@ class ToolsController < ApplicationController
   end
 
   def tool_params
-    params.require(:tool).permit(:name, :description, :city, :image)
+    params.require(:tool).permit(:name, :description, :city, :image, category_ids: [])
   end
 end
