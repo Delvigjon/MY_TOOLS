@@ -1,0 +1,14 @@
+<!-- app/views/tools/my_tools.html.erb -->
+
+<div class="container">
+  <h1>Mes annonces</h1>
+  <% @tools.each do |tool| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= tool.name %></h5>
+        <p class="card-text"><%= tool.description %></p>
+        <!-- Ajoutez d'autres détails de l'outil si nécessaire -->
+      </div>
+    </div>
+  <% end %>
+</div>
