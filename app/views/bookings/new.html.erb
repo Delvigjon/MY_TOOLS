@@ -21,22 +21,3 @@
   <% end %>
   <%= link_to 'Retour', bookings_path, class: "btn btn-secondary mt-3" %>
 </div>
-
-<script>
-  // JavaScript pour activer les validations Bootstrap
-  (function () {
-    'use strict'
-    var forms = document.querySelectorAll('.needs-validation')
-
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
-</script>
