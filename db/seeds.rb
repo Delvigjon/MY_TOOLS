@@ -9,6 +9,7 @@
 #   end
 
 require "faker"
+require "open-uri"
 
 ToolsCategory.destroy_all
 Category.destroy_all
@@ -62,12 +63,20 @@ marteau = Tool.create!(
   user: fred
 )
 
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png")
+marteau.image.attach(io: file, filename: "marteau.png", content_type: "image/png")
+marteau.save
+
 scie = Tool.create!(
   name: "Scie",
   description: "Sert à scier",
   city: "Paris",
   user: amael
 )
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png")
+scie.image.attach(io: file, filename: "scie.png", content_type: "image/png")
+scie.save
 
 tournevis = Tool.create!(
   name: "Tournevis",
@@ -76,12 +85,20 @@ tournevis = Tool.create!(
   user: aurelien
 )
 
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png")
+tournevis.image.attach(io: file, filename: "tournvis.png", content_type: "image/png")
+tournevis.save
+
 perceuse = Tool.create!(
   name: "Perceuse",
   description: "Sert à percer",
   city: "Reims",
   user: jonathan
 )
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png")
+perceuse.image.attach(io: file, filename: "perceuse.png", content_type: "image/png")
+perceuse.save
 
 ToolsCategory.create!(
   tool: marteau,

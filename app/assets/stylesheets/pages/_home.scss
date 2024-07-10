@@ -1,1 +1,21 @@
-// Specific CSS for your home-page
+.hero-banner-container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("hero_banner.jpeg");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-banner-content {
+  width: 50%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  position: absolute;
+}
