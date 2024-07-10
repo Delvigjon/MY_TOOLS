@@ -33,3 +33,19 @@ User.create(
   email: "delvigjon@hotmail.fr",
   password: "password"
 )
+
+Category.create(
+  name: "Jardinage"
+)
+
+Category.create(
+  name: "Nettoyage"
+)
+
+Category.create(
+  name: "Bricolage"
+)
+
+Category.create(
+  name: "Vehicule"
+)
