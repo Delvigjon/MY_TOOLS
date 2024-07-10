@@ -5,3 +5,18 @@
 </p>
 <%= link_to 'Éditer', edit_booking_path(@booking) %>
 <%= link_to 'Retour', bookings_path %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h1>Détails de la Location</h1>
+          <p><strong>Nom de l’outil :</strong> <%= @booking.name %></p>
+          <p><strong>Date de Location :</strong> <%= @booking.date %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
