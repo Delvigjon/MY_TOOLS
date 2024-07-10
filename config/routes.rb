@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :tools do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:show, :index, :update, :destroy, :edit]
-  # Route pour afficher uniquement les outils de l'utilisateur connecté
+  resources :bookings
   get "my_tools", to: "tools#my_tools", as: :my_tools
 end
