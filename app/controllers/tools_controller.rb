@@ -1,6 +1,13 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+
+  def my_tools
+ 
+    @tools = current_user.tools
+  end
+  
   def index
     @tools = Tool.all
   end
