@@ -13,6 +13,7 @@ require "open-uri"
 
 ToolsCategory.destroy_all
 Category.destroy_all
+Booking.destroy_all
 Tool.destroy_all
 User.destroy_all
 
