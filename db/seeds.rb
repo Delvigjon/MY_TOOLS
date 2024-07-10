@@ -10,42 +10,95 @@
 
 require "faker"
 
-User.create(
+ToolsCategory.destroy_all
+Category.destroy_all
+Tool.destroy_all
+User.destroy_all
+
+fred = User.create!(
   name: "Fred",
   email: "fredesousa7@gmail.com",
   password: 'password'
 )
 
-User.create(
+amael = User.create!(
   name: "Amael",
   email: "amael.lathes@gmail.com",
   password: "password"
 )
 
-User.create(
+aurelien = User.create!(
   name: "Aurélien",
   email: "larrieu.aurelien@gmail.com",
   password: "password"
 )
 
-User.create(
+jonathan = User.create!(
   name: "Jonathan",
   email: "delvigjon@hotmail.fr",
   password: "password"
 )
 
-Category.create(
+jardinage = Category.create!(
   name: "Jardinage"
 )
 
-Category.create(
+nettoyage = Category.create!(
   name: "Nettoyage"
 )
 
-Category.create(
+bricolage = Category.create!(
   name: "Bricolage"
 )
 
-Category.create(
+vehicule = Category.create!(
   name: "Vehicule"
+)
+
+marteau = Tool.create!(
+  name: "Marteau",
+  description: "Sert à clouer",
+  city: "Lyon",
+  user: fred
+)
+
+scie = Tool.create!(
+  name: "Scie",
+  description: "Sert à scier",
+  city: "Paris",
+  user: amael
+)
+
+tournevis = Tool.create!(
+  name: "Tournevis",
+  description: "Sert à visser",
+  city: "Bordeau",
+  user: aurelien
+)
+
+perceuse = Tool.create!(
+  name: "Perceuse",
+  description: "Sert à percer",
+  city: "Reims",
+  user: jonathan
+)
+
+ToolsCategory.create!(
+  tool: marteau,
+  category: bricolage
+)
+
+ToolsCategory.create!(
+  tool: scie,
+  category: bricolage
+)
+
+ToolsCategory.create!(
+  tool: tournevis,
+  category: bricolage
+)
+
+ToolsCategory.create!(
+  tool: perceuse,
+  category: bricolage
 )
