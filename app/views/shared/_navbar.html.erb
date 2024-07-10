@@ -27,7 +27,7 @@
             <% if current_user %>
               <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user-circle me-2"></i>
-                <%= current_user.avatar %>
+                <%= current_user.email%>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item d-flex align-items-center justify-content-center", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
