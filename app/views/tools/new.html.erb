@@ -1,0 +1,42 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title text-center mb-4">Ajouter une nouvelle annonce</h1>
+
+          <%= simple_form_for @tool, html: { multipart: true } do |form| %>
+            <div class="form-group">
+         
+              <%= form.input :name, class: 'form-control' %>
+            </div>
+          
+            <div class="form-group">
+          
+              <%= form.input :description, as: :text, class: 'form-control', input_html: { rows: 3 } %>
+            </div>
+          
+            <div class="form-group">
+          
+              <%= form.input :city, class: 'form-control' %>
+            </div>
+          
+            <div class="form-group">
+              <%= form.label :image, class: 'form-label' %>
+              <%= form.file_field :image, class: 'form-control-file' %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :category_ids, "Sélectionner une ou plusieurs catégories", class: 'form-label' %>
+              <%= form.select :category_ids, options_for_select(Category.all.map { |cat| [cat.name, cat.id] }), { class: 'form-control pb-5', multiple: true } %>
+            </div>
+          
+            <div class="text-center">
+              <%= form.button :submit, "Créer l'annonce", class: 'btn btn-primary btn-lg ' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

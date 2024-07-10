@@ -1,0 +1,23 @@
+<div class="container my-5">
+  <h1 class="mb-4"><%= action_name == 'new' ? 'Créer une Nouvelle Location' : 'Éditer une Location' %></h1>
+  <%= form_with(model: @booking, local: true, class: "needs-validation", novalidate: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, 'Nom de l’outil', class: "form-label" %>
+      <%= form.text_field :name, class: "form-control", required: true %>
+      <div class="invalid-feedback">
+        Veuillez entrer le nom de l’outil.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :date, 'Date de Location', class: "form-label" %>
+      <%= form.date_field :date, class: "form-control", required: true %>
+      <div class="invalid-feedback">
+        Veuillez entrer la date de location.
+      </div>
+    </div>
+
+    <%= form.submit action_name == 'new' ? 'Créer Location' : 'Mettre à jour la Location', class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to 'Retour', bookings_path, class: "btn btn-secondary mt-3" %>
+</div>

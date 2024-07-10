@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row mt-4 justify-content-center">
+        <div class="col-md-8 mb-4">
+          <div class="card" id="card">
+            <div class="row no-gutters">
+              <% if @tool.image.present? %>
+                <div class="col-md-4">
+                  <%= image_tag @tool.image.url, class: 'card-img' %>
+                  <div class="mt-3">
+                    <p><strong>Description :</strong> <%= @tool.description %></p>
+                    <p><strong>Ville :</strong> <%= @tool.city %></p>
+                  </div>
+                </div>
+              <% end %>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="mb-4"><%= action_name == 'new' ? 'Créer une Nouvelle Location' : @tool.name %></h1>
+                  <%= form_for [@tool, @booking], html: { class: "needs-validation", novalidate: true } do |form| %>
+                    <div class="mb-3">
+                      <%= form.label :start_date, 'Date de début', class: "form-label" %>
+                      <%= form.date_field :start_date, class: "form-control", required: true %>
+                      <div class="invalid-feedback">
+                        Veuillez entrer la date de début de location.
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <%= form.label :end_date, 'Date de fin', class: "form-label" %>
+                      <%= form.date_field :end_date, class: "form-control", required: true %>
+                      <div class="invalid-feedback">
+                        Veuillez entrer la date de fin de location.
+                      </div>
+                    </div>
+                    <%= form.submit action_name == 'new' ? 'Créer Location' : 'Louer', class: "btn btn-primary" %>
+                  <% end %>
+                  <%= link_to 'Retour', tools_path, class: "btn btn-secondary mt-3" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

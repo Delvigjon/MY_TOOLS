@@ -1,0 +1,48 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+      <%= image_tag "https://res.cloudinary.com/di6bk4n9x/image/upload/v1720556065/outils_pw1yzw.png", height: 30 %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Déposer une nouvelle annonce', new_tool_path, class: 'btn btn-warning btn-lg -pill mb-3 mt-3 px-4 nav-link text-white me-2' %>
+          </li>
+          <li class="nav-item d-flex align-items-center me-2">
+            <%= link_to 'Mes annonces', my_tools_path, class: 'btn btn-primary' %>
+          </li>
+          <li class="nav-item d-flex align-items-center me-2">
+            <%= link_to 'Voir toutes les réservations', tools_path, class: 'btn btn-success' %>
+          </li>
+          <li class="nav-item d-flex align-items-center me-2">
+            <%= link_to "Home", root_path, class: "nav-link d-flex align-items-center h-100 justify-content-center" %>
+          </li>
+          <li class="nav-item dropdown d-flex align-items-center">
+            <% if current_user %>
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user-circle me-2"></i>
+                <%= current_user.email%>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item d-flex align-items-center justify-content-center", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
+              </div>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Rechercher un outil', tools_path, class: 'btn btn-warning btn-lg -pill mb-3 mt-3 px-4 nav-link text-white me-2' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
