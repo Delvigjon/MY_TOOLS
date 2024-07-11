@@ -4,16 +4,63 @@
   top: 0;
   width: 100%;
   transition: top 0.3s;
-  a {
-    float: left;
-    display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    text-decoration: none;
-    &:hover {
-      background-color: #ddd;
-      color: black;
+  .navbar-link {
+    a {
+      background-image: linear-gradient(
+        to right,
+        #F1B60D,
+        #F1B60D 50%,
+        #000 50%
+      );
+      background-size: 200% 100%;
+      background-position: -100%;
+      display: inline-block;
+      padding: 5px 0;
+      position: relative;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease-in-out;
     }
+    a:before {
+      content: '';
+      background: #F1B60D;
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+    a:hover {
+      background-position: 0;
+    }
+    a:hover::before {
+      width: 100%;
+    }
+  }
+}
+.cta-btn{
+  background-color: #F1B60D;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  &:hover{
+    background-color: #ffffff;
+
+  }
+  animation: none; /* Add this rule to remove the animation */
+}
+body {
+  padding-top: 50px; /* Ajoutez cette règle pour compenser la hauteur de la barre de navigation */
+}
+
+@media (max-width: 767px) {
+  #navbar {
+    top: auto; /* Ajoutez cette règle pour réintégrer la barre de navigation au reste de la page */
   }
 }
 

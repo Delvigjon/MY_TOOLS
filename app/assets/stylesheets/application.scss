@@ -237,13 +237,6 @@ body {
   }
 }
 
-/* Optional: Sticky navbar adjustments */
-.sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Z-index élevé pour assurer la visibilité au-dessus du contenu */
-}
-
 .logo {
   max-width: 100px; /* Redimensionner l'image à une taille maximale de 100px de largeur */
 }

@@ -1,9 +1,7 @@
-<script src="nav-bar.js"></script>
-
-<div id="navbar" class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top ">
-  <div class="container-fluid container">
+<div id="navbar" class="navbar navbar-expand-sm navbar-light navbar-lewagon ">
+  <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-      <%= image_tag("logo.png", alt: "Logo", class: "logo", style: "width: 100px; height: 53px; object-fit: cover;", id: "logo") %>
+      <%= image_tag("logo.png", alt: "Logo", class: "avatar navbar-link", style: "width: 100px; height: 53px; object-fit: cover;") %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,11 +14,11 @@
           </li>
           <li class="nav-item mx-2">
           </li>
-          <li class="nav-item mx-2">
-            <%= link_to 'Déposer une nouvelle annonce', new_tool_path, class: 'nav-link' %>
+          <li class="nav-item mx-2 navbar-link cta-btn">
+            <%= link_to 'Déposer une nouvelle annonce', new_tool_path %>
           </li>
-          <li class="nav-item mx-2">
-            <%= link_to 'Voir toutes les annonces', tools_path, class: 'nav-link' %>
+          <li class="nav-item navbar-link mx-2">
+            <%= link_to 'Voir toutes les annonces', tools_path %>
           </li>
           <li class="nav-item dropdown mx-2">
             <% if current_user %>
@@ -28,7 +26,7 @@
                 <%= cl_image_tag current_user.image.key, height: 50, width: 50, style: "border-radius: 50px;", crop: :fill %>
                 Mon compte
               </a>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownAccount">
+                <div class="dropdown-menu dropdown-menu-end border-top-none" aria-labelledby="navbarDropdownAccount">
                 <%= link_to 'Mes annonces', my_tools_path, class: 'dropdown-item' %>
                 <%= link_to 'Mes Locations', bookings_path, class: 'dropdown-item' %>
                 <div class="dropdown-divider"></div>
