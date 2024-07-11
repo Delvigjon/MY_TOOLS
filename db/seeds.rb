@@ -23,11 +23,19 @@ fred = User.create!(
   password: 'password'
 )
 
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
+fred.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
+fred.save
+
 amael = User.create!(
   name: "Amael",
   email: "amael.lathes@gmail.com",
   password: "password"
 )
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
+amael.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
+amael.save
 
 aurelien = User.create!(
   name: "Aurélien",
@@ -35,11 +43,19 @@ aurelien = User.create!(
   password: "password"
 )
 
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
+aurelien.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
+aurelien.save
+
 jonathan = User.create!(
   name: "Jonathan",
   email: "delvigjon@hotmail.fr",
   password: "password"
 )
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
+jonathan.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
+jonathan.save
 
 jardinage = Category.create!(
   name: "Jardinage"
