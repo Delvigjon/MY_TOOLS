@@ -1,3 +1,4 @@
+<%# Hero Banner %>
 <div class="hero-banner-container">
   <div class="hero-banner-content">
     <div>
@@ -17,9 +18,21 @@
       </form>
     </div>
     </div>
-    </div>
-  </div>
+</div>
 
-  <div>
-
+<%# Featured Categories %>
+<div class="featured-categories-container">
+  <h2>Nos catégories les plus Populaires</h2>
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%# <img src="<%= category.image_url %>" class="card-img-top" alt="<%= category.name %>"> %>
+          <div class="card-body">
+            <h5 class="card-title"><%= category.name %></h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>

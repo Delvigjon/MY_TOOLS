@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   end
   resources :bookings
   get "my_tools", to: "tools#my_tools", as: :my_tools
-  resource :profile, only: [:edit, :update]
-end
+
+  resources :categories, only: [:index]
+
+  end
