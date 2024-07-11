@@ -21,11 +21,11 @@
 </div>
 
 <%# Featured Categories %>
-<div class="featured-categories-container">
-  <h2>Nos catégories les plus Populaires</h2>
+<div class="featured-categories-container container">
+  <h2 class="py-3">Nos catégories les plus Populaires</h2>
   <div class="row">
     <% @categories.each do |category| %>
-      <div class="col-md-3">
+      <div class="col-md-3 pb-4">
         <div class="card">
           <%= cl_image_tag category.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if category.image.key.present? %>
           <div class="card-body">
