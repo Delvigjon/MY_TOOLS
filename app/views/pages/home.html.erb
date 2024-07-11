@@ -27,7 +27,7 @@
     <% @categories.each do |category| %>
       <div class="col-md-3">
         <div class="card">
-          <%# <img src="<%= category.image_url %>" class="card-img-top" alt="<%= category.name %>"> %>
+          <%= cl_image_tag category.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if category.image.key.present? %>
           <div class="card-body">
             <h5 class="card-title"><%= category.name %></h5>
           </div>
