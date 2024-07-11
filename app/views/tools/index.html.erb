@@ -16,9 +16,9 @@
               <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= tool.name %></h5>
-                <p class="card-text"><strong>Description :</strong> <%= tool.description %></p>
-                <p class="card-text"><strong>Ville :</strong> <%= tool.city %></p>
-                <p class="card-text"><strong>Catégories :</strong> 
+                <p class="card-text"><i class="fas fa-info-circle"></i> <%= tool.description %></p>
+                <p class="card-text"><i class="fas fa-city"></i> <%= tool.city %></p>
+                <p class="card-text"><i class="fas fa-tags"></i> 
                   <% tool.categories.each do |category| %>
                     <%= category.name %>
                     <% unless category == tool.categories.last %>, <% end %>

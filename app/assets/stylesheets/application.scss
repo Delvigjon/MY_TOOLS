@@ -11,11 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
-/* Global styles */
-/* Définir le dégradé de couleur en arrière-plan du body */
+
 body {
-  background: linear-gradient(to bottom, #3498db, #8e44ad); /* Dégradé de bleu (#3498db) à violet (#8e44ad) */
- 
+  background: linear-gradient(to bottom, #f5f5f5, #ecf0f1);
 }
 
 
@@ -37,6 +35,8 @@ body {
   background-color: #f8f9fa;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+
 
 .card-img-top {
   border-top-left-radius: 15px;
@@ -83,7 +83,7 @@ body {
 
 /* Footer styles */
 .footer {
-  padding: 10px 20px; /* Ajustez les paddings supérieur et inférieur selon vos besoins */
+  padding: 10px 20px; 
   background-color: #343a40;
   color: #fff;
   display: flex;
@@ -132,13 +132,9 @@ body {
   text-decoration: none;
 }
 
-
 .footer-categories a:hover {
   text-decoration: underline;
 }
-
-
-
 
 .footer .fa-heart {
   color: #d23333;
@@ -151,41 +147,34 @@ body {
   border-radius: 5px;
 }
 
-
-
-
-
-/* app/assets/stylesheets/application.scss */
-
-/* Navbar styles */
 .navbar-lewagon {
-  background-color: #ffffff; /* Couleur de fond de la barre de navigation */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère sous la barre */
+  background-color: #ffffff; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .navbar-brand {
-  padding: 0; /* Supprimer le padding du lien de la marque */
+  padding: 0; 
 }
 
 .navbar-brand .logo {
-  width: 80px; /* Taille du logo */
-  height: auto; /* Hauteur automatique pour maintenir les proportions */
-  display: block; /* Pour centrer verticalement */
+  width: 80px; 
+  height: auto; 
+  display: block; 
 }
 
 .navbar-toggler {
-  border: none; /* Supprimer la bordure du bouton de bascule */
+  border: none; 
 }
 
 .navbar-toggler-icon {
-  background-color: #333; /* Couleur de l'icône du bouton de bascule */
-  width: 24px; /* Taille de l'icône */
-  height: 2px; /* Hauteur de l'icône */
+  background-color: #333; 
+  width: 24px; 
+  height: 2px; 
 }
 
 .navbar-toggler:focus,
 .navbar-toggler:active {
-  outline: none; /* Supprimer l'effet de focus */
+  outline: none; 
 }
 
 .navbar-nav {

@@ -1,14 +1,18 @@
 <div class="footer">
   <div class="container">
     <div class="text-center">
-      <%= image_tag("logo.png", alt: "Logo", class: "logo") %>
+      <%= link_to(root_path) do %>
+        <%= image_tag("logo.png", alt: "Logo", class: "logo") %>
+      <% end %>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6 footer-categories d-flex flex-row">
-        <a href="#" style="margin-right: 40px;">Mes locations</a>
-        <a href="#" style="margin-right: 40px;">Mes annonces</a>
-        <a href="#" style="margin-right: 40px;">Mon compte</a>
-        <%= link_to 'Mon profil', edit_profile_path, style: "margin-right: 40px;" %>
+
+        <a href="#" style="margin-right: 20px;">Mes locations</a>
+        <a href="#" style="margin-right: 20px;">Mes annonces</a>
+        <a href="#" style="margin-right: 20px;">Mon compte</a>
+        
+
         <div class="dropdown">
           <button class="btn dropdown-toggle text-white" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Catégories
