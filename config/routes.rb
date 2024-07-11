@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/edit'
+  get 'profiles/update'
   devise_for :users
   root to: "pages#home"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,4 +14,5 @@ Rails.application.routes.draw do
   resources :bookings, only: [:show, :index, :update, :destroy, :edit]
   # Route pour afficher uniquement les outils de l'utilisateur connecté
   get "my_tools", to: "tools#my_tools", as: :my_tools
+  resource :profile, only: [:edit, :update]
 end
