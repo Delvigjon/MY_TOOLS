@@ -8,25 +8,53 @@
       </div>
 
       <div class="row mt-4">
-        <% @tools.each do |tool| %>
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <%= link_to tool_path(tool) do %>
-                <%= cl_image_tag tool.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if tool.image.key.present? %>
-              <% end %>
-              <div class="card-body">
-                <h5 class="card-title"><%= tool.name %></h5>
-                <p class="card-text"><i class="fas fa-info-circle"></i> <%= tool.description %></p>
-                <p class="card-text"><i class="fas fa-city"></i> <%= tool.city %></p>
-                <p class="card-text"><i class="fas fa-tags"></i> 
-                  <% tool.categories.each do |category| %>
-                    <%= category.name %>
-                    <% unless category == tool.categories.last %>, <% end %>
-                  <% end %>
-                </p>
-              </div>
+        <div class="col-md-12 mb-4">
+          <form action="/tools" method="get">
+            <div class="form-group">
+              <label for="category">Filtrer par catégorie:</label>
+              <select name="category" id="category" class="form-control">
+                <option value="">Toutes les catégories</option>
+                <% Category.all.each do |category| %>
+                  <option value="<%= category.id %>" <%= 'selected' if params[:category] == category.id.to_s %>> <%= category.name %></option>
+                <% end %>
+              </select>
             </div>
-          </div>
+            <div class="form-group">
+              <label for="city">Filtrer par ville:</label>
+              <select name="city" id="city" class="form-control">
+                <option value="">Toutes les villes</option>
+                <% Tool.all.each do |tool| %>
+                  <option value="<%= tool.city %>" <%= 'selected' if params[:city] == tool.city.to_s %>> <%= tool.city %></option>
+                <% end %>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrer</button>
+          </form>
+        </div>
+
+        <% @tools.each do |tool| %>
+          <% if params[:category].blank? || tool.categories.exists?(id: params[:category]) %>
+            <% if params[:city].blank? || tool.city == params[:city] %>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <%= link_to tool_path(tool) do %>
+                    <%= cl_image_tag tool.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if tool.image.key.present? %>
+                  <% end %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= tool.name %></h5>
+                    <p class="card-text"><i class="fas fa-info-circle"></i> <%= tool.description %></p>
+                    <p class="card-text"><i class="fas fa-city"></i> <%= tool.city %></p>
+                    <p class="card-text"><i class="fas fa-tags"></i>
+                      <% tool.categories.each do |category| %>
+                        <%= category.name %>
+                        <% unless category == tool.categories.last %>, <% end %>
+                      <% end %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

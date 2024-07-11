@@ -4,7 +4,6 @@ class ToolsController < ApplicationController
   before_action :authenticate_user!
 
   def my_tools
-
     @tools = current_user.tools
   end
 
