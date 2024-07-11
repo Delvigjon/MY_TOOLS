@@ -1,23 +1,38 @@
+<%# Hero Banner %>
 <div class="hero-banner-container">
   <div class="hero-banner-content">
     <div>
       <h1>Bienvenue sur <strong>My Tools!</strong></h1>
       <p>Trouvez les meilleurs outils près de chez vous!</p>
     </div>
-    <div class="search-bar" >
-      <form class="form-inline d-flex justify-content-center ">
-        <div class="form-group test">
-          <input class="form-control" type="search" placeholder="Ville" aria-label="Ville">
-        </div>
-        <div class="form-group test">
-          <input class="form-control" type="search" placeholder="Quel outils recherchez vous?" aria-label="Outils">
-        </div>
-        <button class="btn btn-primary " type="submit">Search</button>
+    <div class="search-bar-container" >
+      <form class="form-inline d-flex justify-content-center " action="<%= tools_path %>" method="get">
+        <div class="form-group">
+        <input class="form-control" type="search" name="name" placeholder="Quel outils recherchez vous?" aria-label="name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="search" name="city" placeholder="Ville" aria-label="city">
+      </div>
+
+      <button class="btn btn-primary " type="submit">Search</button>
       </form>
     </div>
     </div>
-  </div>
+</div>
 
-  <div>
-
+<%# Featured Categories %>
+<div class="featured-categories-container">
+  <h2>Nos catégories les plus Populaires</h2>
+  <div class="row">
+    <% @categories.each do |category| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%# <img src="<%= category.image_url %>" class="card-img-top" alt="<%= category.name %>"> %>
+          <div class="card-body">
+            <h5 class="card-title"><%= category.name %></h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
