@@ -1,14 +1,3 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-  .navbar-brand img {
-    width: 40px;
-  }
-}
-
 #navbar {
   background-color: #ffffff;
   position: fixed;
@@ -25,5 +14,15 @@
       background-color: #ddd;
       color: black;
     }
+  }
+}
+
+body {
+  padding-top: 50px; /* Ajoutez cette règle pour compenser la hauteur de la barre de navigation */
+}
+
+@media (max-width: 767px) {
+  #navbar {
+    top: auto; /* Ajoutez cette règle pour réintégrer la barre de navigation au reste de la page */
   }
 }
