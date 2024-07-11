@@ -1,9 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+<script src="nav-bar.js"></script>
+
+<div id="navbar" class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-      <%= image_tag("logo.png", alt: "Logo", class: "logo", style: "width: 80px; height: auto;") %>
+      <%= image_tag("logo.png", alt: "Logo", class: "logo", style: "width: 100px; height: 53px; object-fit: cover;", id: "logo") %>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,7 +23,7 @@
           </li>
           <li class="nav-item dropdown">
             <% if current_user %>
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= cl_image_tag current_user.image.key, height: 50, width: 50, style: "border-radius: 50px;", crop: :fill %>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
