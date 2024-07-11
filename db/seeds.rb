@@ -124,3 +124,51 @@ ToolsCategory.create!(tool: marteau, category: bricolage)
 ToolsCategory.create!(tool: scie, category: bricolage)
 ToolsCategory.create!(tool: tournevis, category: bricolage)
 ToolsCategory.create!(tool: perceuse, category: bricolage)
+
+marteau_booking = Booking.create!(
+  status: "En attente",
+  user: fred,
+  tool: marteau,
+  start_date: "2024-06-15",
+  end_date: "2024-06-18"
+)
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png")
+marteau_booking.image.attach(io: file, filename: "marteau.png", content_type: "image/png")
+marteau_booking.save!
+
+scie_booking = Booking.create!(
+  status: "En attente",
+  user: amael,
+  tool: scie,
+  start_date: "2024-06-15",
+  end_date: "2024-06-18"
+)
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png")
+scie_booking.image.attach(io: file, filename: "scie.png", content_type: "image/png")
+scie_booking.save!
+
+tournevis_booking = Booking.create!(
+  status: "En attente",
+  user: aurelien,
+  tool: tournevis,
+  start_date: "2024-06-15",
+  end_date: "2024-06-18"
+)
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png")
+tournevis_booking.image.attach(io: file, filename: "tournvis.png", content_type: "image/png")
+tournevis_booking.save!
+
+perceuse_booking = Booking.create!(
+  status: "En attente",
+  user: jonathan,
+  tool: perceuse,
+  start_date: "2024-06-15",
+  end_date: "2024-06-18"
+)
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png")
+perceuse_booking.image.attach(io: file, filename: "viceuse.png", content_type: "image/png")
+perceuse_booking.save!
