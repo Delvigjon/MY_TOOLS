@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  # before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
     @bookings = Booking.all
@@ -16,8 +16,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.tool = Tool.find(params[:tool_id])
     @booking.user = current_user
-    if @booking.save!
-      redirect_to booking_path(@booking), notice: 'Location créée avec succès.'
+    if @booking.save
+      redirect_to bookings_path, notice: 'Location créée avec succès.'
     else
       render :new
     end
