@@ -1,5 +1,4 @@
 class Tool < ApplicationRecord
-  include PgSearch::Model
 
   belongs_to :user
   has_many :tools_categories, dependent: :destroy

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   end
   resources :bookings
   get "my_tools", to: "tools#my_tools", as: :my_tools
+
+  resources :categories, only: [:index]
 end
