@@ -11,18 +11,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Déposer une nouvelle annonce', new_tool_path, class: 'nav-link' %>
+          <li class="nav-item mx-2">
+            <%= link_to 'Mes Locations', bookings_path, class: 'nav-link' %> <!-- Nouveau lien pour l'index des bookings -->
           </li>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <%= link_to 'Mes annonces', my_tools_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
+            <%= link_to 'Déposer une nouvelle annonce', new_tool_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item mx-2">
             <%= link_to 'Voir toutes les annonces', tools_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown mx-2">
             <% if current_user %>
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= cl_image_tag current_user.image.key, height: 50, width: 50, style: "border-radius: 50px;", crop: :fill %>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -33,7 +36,7 @@
             <% end %>
           </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
