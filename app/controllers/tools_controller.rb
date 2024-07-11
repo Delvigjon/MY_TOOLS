@@ -4,12 +4,20 @@ class ToolsController < ApplicationController
   before_action :authenticate_user!
 
   def my_tools
- 
+
     @tools = current_user.tools
   end
-  
+
   def index
-    @tools = Tool.all
+    if params[:name].present? && params[:city].present?
+      @tools = Tool.where("name ILIKE ? AND city ILIKE ?", "#{params[:name]}%", "#{params[:city]}%")
+    elsif params[:name].present?
+      @tools = Tool.where("name ILIKE ?", "#{params[:name]}%")
+    elsif params[:city].present?
+      @tools = Tool.where("city ILIKE ?", "#{params[:city]}%")
+    else
+      @tools = Tool.all
+    end
   end
 
   def new

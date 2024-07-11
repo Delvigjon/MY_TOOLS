@@ -5,9 +5,9 @@
         <div class="col-md-8 mb-4">
           <div class="card" id="card">
             <div class="row no-gutters">
-              <% if @tool.image.present? %>
+              <% if @tool.image.key.present? %>
                 <div class="col-md-4">
-                  <%= image_tag @tool.image.url, class: 'card-img' %>
+                  <%= cl_image_tag @tool.image.key, class: 'card-img' %>
                   <div class="mt-3">
                     <p><strong>Description :</strong> <%= @tool.description %></p>
                     <p><strong>Ville :</strong> <%= @tool.city %></p>
