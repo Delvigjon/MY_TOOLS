@@ -10,9 +10,28 @@ User.destroy_all
 
 # Création des catégories
 jardinage = Category.create!(name: "Jardinage")
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702489/jardinage_ti3i6t.png")
+jardinage.image.attach(io: file, filename: "jardinage.png", content_type: "image/png")
+jardinage.save!
+
 nettoyage = Category.create!(name: "Nettoyage")
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702493/nettoyage_r3rf12.jpg")
+nettoyage.image.attach(io: file, filename: "nettoyage.png", content_type: "image/png")
+nettoyage.save!
+
 bricolage = Category.create!(name: "Bricolage")
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702490/bricolage_vhdmar.jpg")
+bricolage.image.attach(io: file, filename: "bricolage.png", content_type: "image/png")
+bricolage.save!
+
 vehicule = Category.create!(name: "Véhicule")
+
+file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702487/ve%CC%81hicule_bipxdj.jpg")
+vehicule.image.attach(io: file, filename: "vehicule.png", content_type: "image/png")
+vehicule.save!
 
 # Création des utilisateurs
 fred = User.create!(
