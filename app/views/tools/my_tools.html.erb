@@ -1,14 +1,34 @@
-<!-- app/views/tools/my_tools.html.erb -->
-
 <div class="container">
-  <h1>Mes annonces</h1>
-  <% @tools.each do |tool| %>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title"><%= tool.name %></h5>
-        <p class="card-text"><%= tool.description %></p>
-        <!-- Ajoutez d'autres détails de l'outil si nécessaire -->
+  <div class="row">
+    <div class="col">
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1249611/pexels-photo-1249611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); background-position: center; background-size: cover;">
+        <div class="container text-center text-white py-5">
+          <h1 class="my-4" style="font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 3rem;">Liste des annonces</h1>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <% @tools.each do |tool| %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100"> <!-- Ajoutez la classe h-100 pour rendre la carte de hauteur égale -->
+              <%= link_to tool_path(tool) do %>
+                <%= cl_image_tag tool.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if tool.image.key.present? %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= tool.name %></h5>
+                <p class="card-text"><i class="fa-solid fa-city"></i> <%= tool.city %></p>
+                <p class="card-text">
+                  <i class="fa-solid fa-list"></i> <!-- Icône pour représenter les catégories -->
+                  <% tool.categories.each do |category| %>
+                    <%= category.name %>
+                    <% unless category == tool.categories.last %>, <% end %>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
