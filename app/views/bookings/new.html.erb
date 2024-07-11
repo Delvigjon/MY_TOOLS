@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container-fluid min-vh-100 my-5">
   <h1 class="mb-4"><%= action_name == 'new' ? 'Créer une Nouvelle Location' : 'Éditer une Location' %></h1>
   <%= form_with(model: @booking, local: true, class: "needs-validation", novalidate: true) do |form| %>
     <div class="mb-3">
