@@ -12,9 +12,12 @@
 @import "pages/index";
 
 /* Global styles */
+/* Définir le dégradé de couleur en arrière-plan du body */
 body {
-  background-color: rgb(207, 207, 207);
+  background: linear-gradient(to bottom, #3498db, #8e44ad); /* Dégradé de bleu (#3498db) à violet (#8e44ad) */
+ 
 }
+
 
 .card {
   border-radius: 15px;
@@ -23,9 +26,7 @@ body {
   transition: transform 0.2s;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
+
 
 .card-title {
   font-family: 'Montserrat', sans-serif;
@@ -82,7 +83,7 @@ body {
 
 /* Footer styles */
 .footer {
-  padding: 20px;
+  padding: 10px 20px; /* Ajustez les paddings supérieur et inférieur selon vos besoins */
   background-color: #343a40;
   color: #fff;
   display: flex;
@@ -131,16 +132,16 @@ body {
   text-decoration: none;
 }
 
+
 .footer-categories a:hover {
   text-decoration: underline;
 }
 
-.footer-categories a span {
-  color: #F1B60D;
-}
+
+
 
 .footer .fa-heart {
-  color: #D23333;
+  color: #d23333;
 }
 
 .banner {
@@ -150,14 +151,109 @@ body {
   border-radius: 5px;
 }
 
-.banner h1 {
-  margin: 0;
-  color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+
+
+
+
+/* app/assets/stylesheets/application.scss */
+
+/* Navbar styles */
+.navbar-lewagon {
+  background-color: #ffffff; /* Couleur de fond de la barre de navigation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère sous la barre */
 }
 
-.banner ul span {
-  color: #F1B60D;
+.navbar-brand {
+  padding: 0; /* Supprimer le padding du lien de la marque */
+}
+
+.navbar-brand .logo {
+  width: 80px; /* Taille du logo */
+  height: auto; /* Hauteur automatique pour maintenir les proportions */
+  display: block; /* Pour centrer verticalement */
+}
+
+.navbar-toggler {
+  border: none; /* Supprimer la bordure du bouton de bascule */
+}
+
+.navbar-toggler-icon {
+  background-color: #333; /* Couleur de l'icône du bouton de bascule */
+  width: 24px; /* Taille de l'icône */
+  height: 2px; /* Hauteur de l'icône */
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none; /* Supprimer l'effet de focus */
+}
+
+.navbar-nav {
+  margin-left: auto; /* Déplacer les éléments à droite de la barre */
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px; /* Espacement entre les éléments de la barre de navigation */
+}
+
+.nav-link {
+  color: #333; /* Couleur du texte des liens */
+  font-weight: bold; /* Gras pour les liens */
+  transition: color 0.2s; /* Transition pour un effet de survol */
+}
+
+.nav-link:hover {
+  color: #007bff; /* Couleur du texte des liens au survol */
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+  background-color: #ffffff; /* Couleur de fond du menu déroulant */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Bordure légère */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.dropdown-item {
+  color: #333; /* Couleur du texte des éléments de menu */
+  transition: background-color 0.2s; /* Transition pour un effet de survol */
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa; /* Couleur de fond des éléments de menu au survol */
+}
+
+/* User dropdown styles */
+.dropdown-toggle::after {
+  display: none; /* Supprimer la flèche après le texte du lien de déclenchement */
+}
+
+.dropdown-toggle {
+  color: #333; /* Couleur du texte du lien de déclenchement */
+  transition: color 0.2s; /* Transition pour un effet de survol */
+}
+
+.dropdown-toggle:hover {
+  color: #007bff; /* Couleur du texte du lien de déclenchement au survol */
+}
+
+.dropdown-menu-end {
+  right: 0; /* Aligner le menu déroulant à droite */
+}
+
+/* Adjustments for different screen sizes */
+@media (max-width: 576px) {
+  .navbar-nav .nav-item {
+    margin-right: 0; /* Aucun espacement entre les éléments sur les petits écrans */
+  }
+}
+
+/* Optional: Sticky navbar adjustments */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Z-index élevé pour assurer la visibilité au-dessus du contenu */
+}
+
+.logo {
+  max-width: 100px; /* Redimensionner l'image à une taille maximale de 100px de largeur */
 }
