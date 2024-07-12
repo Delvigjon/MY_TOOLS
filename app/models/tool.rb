@@ -2,6 +2,7 @@ class Tool < ApplicationRecord
   belongs_to :user
   has_many :tools_categories, dependent: :destroy
   has_many :categories, through: :tools_categories
+  has_many :bookings, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true

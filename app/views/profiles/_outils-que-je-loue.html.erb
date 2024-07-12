@@ -1,0 +1,9 @@
+<% @user.bookings.each do |loc| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= loc.tool.name %></h5>
+      <p class="card-text">Durée de ma location : <%= loc.start_date %> au <%= loc.end_date %></p>
+      <a href="<%= booking_path(loc) %>" class="btn btn-primary">Voir la location</a>
+    </div>
+  </div>
+<% end %>

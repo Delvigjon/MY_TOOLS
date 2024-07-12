@@ -12,8 +12,11 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings
+
   get "my_tools", to: "tools#my_tools", as: :my_tools
+  get "mon_compte", to: "profiles#mon_compte", as: :mon_compte
 
   resources :categories, only: [:index]
+
 
   end

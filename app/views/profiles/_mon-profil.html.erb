@@ -1,0 +1,16 @@
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-4">
+    <div class="image d-flex flex-column justify-content-center align-items-center">
+      <button class="btn btn-secondary">
+        <img src="<%= @user.image %>" height="100" width="100" />
+      </button>
+      <span class="idd"><%= @user.email %></span>
+      <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+        <span class="number"><%= @user.tools.count %> <span class="follow"> <%= @user.tools.count > 1 ? "Locations" : "Location" %> </span></span>
+      </div>
+      <div class="px-2 rounded mt-4 date">
+        <span class="join">Joined <%= @user.created_at.strftime("%B, %Y") %></span>
+      </div>
+    </div>
+  </div>
+</div>
