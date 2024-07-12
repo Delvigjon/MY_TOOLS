@@ -6,6 +6,7 @@
           <h1>Détails de la Location</h1>
           <p><strong>Nom de l’outil :</strong> <%= @booking.tool.name %></p>
           <p><strong>Date de Location :</strong> <%= @booking.start_date %> au <%= @booking.end_date %></p>
+
           <%= link_to 'Éditer', edit_booking_path(@booking) %>
           <%= link_to 'Retour', bookings_path %>
         </div>

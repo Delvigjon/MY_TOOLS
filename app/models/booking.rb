@@ -5,12 +5,11 @@ class Booking < ApplicationRecord
   has_one_attached :image
 
   validates :start_date, :end_date, presence: true
-  # before_save :total_price
+  before_save :calculate_total_price
 
   private
 
-  # def total_price
-  #   (end_date - start_date).to_i *
-  #   tool.price
-  # end
+  def calculate_total_price
+    self.total_price = (end_date - start_date).to_i * tool.price_per_day
+  end
 end

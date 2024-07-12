@@ -6,6 +6,7 @@
     <div class="list-group-item">
       <h5 class="mb-1">Outil: <%= booking.tool.name %></h5>
       <p class="mb-1">Du: <%= booking.start_date %> au <%= booking.end_date %></p>
+      <p><strong>Prix total :</strong> <%= booking.total_price %> €</p>
       <div class="btn-group" role="group">
       <%= cl_image_tag booking.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if booking.image.key.present? %>
         <%#= link_to 'Voir', booking, class: 'btn btn-primary btn-sm' %>
