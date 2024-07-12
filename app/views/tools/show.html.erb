@@ -32,6 +32,10 @@
                           Veuillez entrer la date de fin de location.
                       </div>
                     </div>
+                      <p>
+                        <strong>Prix par jour:</strong>
+                        <%= @tool.price_per_day %> €
+                      </p>
                     <%= form.submit action_name == 'new' ? 'Créer Location' : 'Louer', class: "btn btn-warning" %>
                   <% end %>
                   <%= link_to 'Retour', tools_path, class: "btn btn-secondary mt-3" %>
