@@ -40,14 +40,14 @@ end
 
 # Create Tools
 tools = [
-  { name: "Marteau", description: "Outil de frappe", city: "Lyon", user: User.find_by(name: "Fred"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png" },
-  { name: "Scie", description: "Outil de découpe", city: "Paris", user: User.find_by(name: "Amael"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png" },
-  { name: "Tournevis", description: "Outil de vissage", city: "Bordeaux", user: User.find_by(name: "Aurélien"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png" },
-  { name: "Perceuse", description: "Outil de perçage", city: "Reims", user: User.find_by(name: "Jonathan"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png" }
+  { name: "Marteau", description: "Outil de frappe", city: "Lyon", user: User.find_by(name: "Fred"),price_per_day: 11, image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png" },
+  { name: "Scie", description: "Outil de découpe", city: "Paris", user: User.find_by(name: "Amael"),price_per_day: 12, image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png" },
+  { name: "Tournevis", description: "Outil de vissage", city: "Bordeaux", user: User.find_by(name: "Aurélien"),price_per_day: 15, image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png" },
+  { name: "Perceuse", description: "Outil de perçage", city: "Reims", user: User.find_by(name: "Jonathan"),price_per_day: 10, image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png" }
 ]
 
 tools.each do |tool_data|
-  tool = Tool.create!(name: tool_data[:name], description: tool_data[:description], city: tool_data[:city], user: tool_data[:user])
+  tool = Tool.create!(name: tool_data[:name], description: tool_data[:description], city: tool_data[:city], user: tool_data[:user], price_per_day:tool_data[:price_per_day])
   file = URI.open(tool_data[:image_url])
   tool.image.attach(io: file, filename: "#{tool_data[:name].downcase}.png", content_type: "image/png")
   tool.save!
