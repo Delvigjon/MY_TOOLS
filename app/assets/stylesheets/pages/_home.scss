@@ -23,10 +23,18 @@
 }
 
 .search-bar-container{
-  background-color: #02020224;
   display: inline-block;
   padding-block: 4px;
   padding-right: 4px;
   padding-left: 4px;
   border-radius: 4px;
+}
+
+.tools_categories {
+  text-decoration: none;
+  color: black;
+}
+
+#title_category {
+  font-weight: bold;
 }
