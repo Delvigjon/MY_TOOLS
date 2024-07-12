@@ -24,11 +24,11 @@
             <% if current_user %>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= cl_image_tag current_user.image.key, height: 50, width: 50, style: "border-radius: 50px;", crop: :fill %>
-                Mon compte
               </a>
                 <div class="dropdown-menu dropdown-menu-end border-top-none" aria-labelledby="navbarDropdownAccount">
                 <%= link_to 'Mes annonces', my_tools_path, class: 'dropdown-item' %>
                 <%= link_to 'Mes Locations', bookings_path, class: 'dropdown-item' %>
+                <%= link_to 'Mon compte', mon_compte_path,class: 'dropdown-item' %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
               </div>
