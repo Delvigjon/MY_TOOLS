@@ -1,6 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
+  def mon_compte
+    @user = current_user
+    @tools = current_user.tools
+    @bookings = current_user.bookings
+  end
+
   def edit
     @user = current_user
   end

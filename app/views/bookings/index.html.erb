@@ -1,19 +1,29 @@
-<div class="container-fluid min-vh-100">
-<h1 class="my-4">Mes Locations</h1>
+<div class="container-fluid my-4">
+  <h1 class="text-center mb-4">Mes Locations</h1>
 
-<div class="list-group">
-  <% @bookings.each do |booking| %>
-    <div class="list-group-item">
-      <h5 class="mb-1">Outil: <%= booking.tool.name %></h5>
-      <p class="mb-1">Du: <%= booking.start_date %> au <%= booking.end_date %></p>
-      <p><strong>Prix total :</strong> <%= booking.total_price %> €</p>
-      <div class="btn-group" role="group">
-      <%= cl_image_tag booking.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" if booking.image.key.present? %>
-        <%#= link_to 'Voir', booking, class: 'btn btn-primary btn-sm' %>
-        <%#= link_to 'Éditer', edit_booking_path(booking), class: 'btn btn-warning btn-sm' %>
-        <%#= link_to 'Supprimer', booking, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger btn-sm' %>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% @bookings.each do |booking| %>
+      <div class="col">
+        <div class="card h-100 shadow">
+          <% if booking.tool.image.attached? %>
+            <%= cl_image_tag booking.tool.image.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "placeholder_image.jpg", height: 300, width: 400, class: "card-img-top" %>
+            <!-- Remplacez "placeholder_image.jpg" par l'URL ou le chemin de votre image de remplacement -->
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title mb-2"><%= booking.tool.name %></h5>
+            <p class="card-text mb-1">Du <%= booking.start_date %> au <%= booking.end_date %></p>
+            <p><strong>Prix total :</strong> <%= booking.total_price %> €</p>
+            <div class="d-grid gap-2">
+              <%#= link_to 'Voir', booking, class: 'btn btn-primary btn-sm' %>
+              <%#= link_to 'Éditer', edit_booking_path(booking), class: 'btn btn-warning btn-sm' %>
+              <%#= link_to 'Supprimer', booking, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger btn-sm' %>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>

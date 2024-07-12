@@ -1,0 +1,31 @@
+<div>
+  <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Date d'ajout</th>
+      <th scope="col">État</th>
+      <th scope="col"> Loueur </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.tools.each do |tool|%>
+    <tr>
+      <% counter = 0 %>
+      <th scope="row"><%= counter += 1 %></th>
+      <td><%= tool.name %></td>
+      <td><%= tool.created_at.strftime("%d/%m/%Y") %></td>
+      <% if tool.bookings.empty? %>
+        <td>Disponible</td>
+      <% else %>
+        <td>Indisponible</td>
+        <% end %>
+      <% tool.bookings.each do |booking| %>
+        <td><%= booking.user.email %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
