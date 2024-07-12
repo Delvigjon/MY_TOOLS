@@ -192,9 +192,7 @@ body {
   transition: color 0.2s; /* Transition pour un effet de survol */
 }
 
-.nav-link:hover {
-  color: #007bff; /* Couleur du texte des liens au survol */
-}
+
 
 /* Dropdown styles */
 .dropdown-menu {
@@ -242,4 +240,13 @@ body {
 }
 .margin-top-body{
   margin-top: 80px;
+}
+
+.custom-button {
+  box-shadow: none;
+}
+.custom-button:focus,
+.custom-button:active {
+  outline: none;
+  box-shadow: none;
 }
