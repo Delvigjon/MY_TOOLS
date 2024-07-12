@@ -30,7 +30,9 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     @tool.user = current_user
-
+    
+   
+    
     if @tool.save
       redirect_to tools_path, notice: "L'annonce a été créée avec succès."
     else

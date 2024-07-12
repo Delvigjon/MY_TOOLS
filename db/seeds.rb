@@ -1,174 +1,70 @@
 require "faker"
 require "open-uri"
 
-# Supprimer toutes les données existantes
+# Clear existing data
 ToolsCategory.destroy_all
 Category.destroy_all
 Booking.destroy_all
 Tool.destroy_all
 User.destroy_all
 
-# Création des catégories
-jardinage = Category.create!(name: "Jardinage")
+# Create Categories
+categories = {
+  jardinage: { name: "Jardinage", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720702489/jardinage_ti3i6t.png" },
+  nettoyage: { name: "Nettoyage", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720702493/nettoyage_r3rf12.jpg" },
+  bricolage: { name: "Bricolage", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720702490/bricolage_vhdmar.jpg" },
+  vehicule: { name: "Véhicule", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720702487/ve%CC%81hicule_bipxdj.jpg" }
+}
 
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702489/jardinage_ti3i6t.png")
-jardinage.image.attach(io: file, filename: "jardinage.png", content_type: "image/png")
-jardinage.save!
+categories.each do |key, value|
+  category = Category.create!(name: value[:name])
+  file = URI.open(value[:image_url])
+  category.image.attach(io: file, filename: "#{key}.png", content_type: "image/png")
+  category.save!
+end
 
-nettoyage = Category.create!(name: "Nettoyage")
+# Create Users
+users = [
+  { name: "Fred", email: "fredesousa7@gmail.com", password: 'password', image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png" },
+  { name: "Amael", email: "amael.lathes@gmail.com", password: "password", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png" },
+  { name: "Aurélien", email: "larrieu.aurelien@gmail.com", password: "password", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png" },
+  { name: "Jonathan", email: "delvigjon@hotmail.fr", password: "password", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png" }
+]
 
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702493/nettoyage_r3rf12.jpg")
-nettoyage.image.attach(io: file, filename: "nettoyage.png", content_type: "image/png")
-nettoyage.save!
+users.each do |user_data|
+  user = User.create!(name: user_data[:name], email: user_data[:email], password: user_data[:password])
+  file = URI.open(user_data[:image_url])
+  user.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
+  user.save!
+end
 
-bricolage = Category.create!(name: "Bricolage")
+# Create Tools
+tools = [
+  { name: "Marteau", description: "Outil de frappe", city: "Lyon", user: User.find_by(name: "Fred"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png" },
+  { name: "Scie", description: "Outil de découpe", city: "Paris", user: User.find_by(name: "Amael"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png" },
+  { name: "Tournevis", description: "Outil de vissage", city: "Bordeaux", user: User.find_by(name: "Aurélien"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png" },
+  { name: "Perceuse", description: "Outil de perçage", city: "Reims", user: User.find_by(name: "Jonathan"), image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png" }
+]
 
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702490/bricolage_vhdmar.jpg")
-bricolage.image.attach(io: file, filename: "bricolage.png", content_type: "image/png")
-bricolage.save!
+tools.each do |tool_data|
+  tool = Tool.create!(name: tool_data[:name], description: tool_data[:description], city: tool_data[:city], user: tool_data[:user])
+  file = URI.open(tool_data[:image_url])
+  tool.image.attach(io: file, filename: "#{tool_data[:name].downcase}.png", content_type: "image/png")
+  tool.save!
+  ToolsCategory.create!(tool: tool, category: Category.find_by(name: "Bricolage"))
+end
 
-vehicule = Category.create!(name: "Véhicule")
+# Create Bookings
+bookings = [
+  { status: "En attente", user: User.find_by(name: "Fred"), tool: Tool.find_by(name: "Marteau"), start_date: "2024-06-15", end_date: "2024-06-18", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png" },
+  { status: "En attente", user: User.find_by(name: "Amael"), tool: Tool.find_by(name: "Scie"), start_date: "2024-06-15", end_date: "2024-06-18", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png" },
+  { status: "En attente", user: User.find_by(name: "Aurélien"), tool: Tool.find_by(name: "Tournevis"), start_date: "2024-06-15", end_date: "2024-06-18", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png" },
+  { status: "En attente", user: User.find_by(name: "Jonathan"), tool: Tool.find_by(name: "Perceuse"), start_date: "2024-06-15", end_date: "2024-06-18", image_url: "https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png" }
+]
 
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720702487/ve%CC%81hicule_bipxdj.jpg")
-vehicule.image.attach(io: file, filename: "vehicule.png", content_type: "image/png")
-vehicule.save!
-
-# Création des utilisateurs
-fred = User.create!(
-  name: "Fred",
-  email: "fredesousa7@gmail.com",
-  password: 'password'
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
-fred.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
-fred.save!
-
-amael = User.create!(
-  name: "Amael",
-  email: "amael.lathes@gmail.com",
-  password: "password"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
-amael.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
-amael.save!
-
-aurelien = User.create!(
-  name: "Aurélien",
-  email: "larrieu.aurelien@gmail.com",
-  password: "password"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
-aurelien.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
-aurelien.save!
-
-jonathan = User.create!(
-  name: "Jonathan",
-  email: "delvigjon@hotmail.fr",
-  password: "password"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720691993/avatar_m7e7zi.png")
-jonathan.image.attach(io: file, filename: "avatar.png", content_type: "image/png")
-jonathan.save!
-
-# Création des outils
-marteau = Tool.create!(
-  name: "Marteau",
-  description: "Outil de frappe",
-  city: "Lyon",
-  user: fred
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png")
-marteau.image.attach(io: file, filename: "marteau.png", content_type: "image/png")
-marteau.save!
-
-scie = Tool.create!(
-  name: "Scie",
-  description: "Outil de découpe",
-  city: "Paris",
-  user: amael
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png")
-scie.image.attach(io: file, filename: "scie.png", content_type: "image/png")
-scie.save!
-
-tournevis = Tool.create!(
-  name: "Tournevis",
-  description: "Outil de vissage",
-  city: "Bordeaux",
-  user: aurelien
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png")
-tournevis.image.attach(io: file, filename: "tournvis.png", content_type: "image/png")
-tournevis.save!
-
-perceuse = Tool.create!(
-  name: "Perceuse",
-  description: "Outil de perçage",
-  city: "Reims",
-  user: jonathan
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png")
-perceuse.image.attach(io: file, filename: "perceuse.png", content_type: "image/png")
-perceuse.save!
-
-# Association des outils aux catégories
-ToolsCategory.create!(tool: marteau, category: bricolage)
-ToolsCategory.create!(tool: scie, category: bricolage)
-ToolsCategory.create!(tool: tournevis, category: bricolage)
-ToolsCategory.create!(tool: perceuse, category: bricolage)
-
-marteau_booking = Booking.create!(
-  status: "En attente",
-  user: fred,
-  tool: marteau,
-  start_date: "2024-06-15",
-  end_date: "2024-06-18"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/marteau_omcxni.png")
-marteau_booking.image.attach(io: file, filename: "marteau.png", content_type: "image/png")
-marteau_booking.save!
-
-scie_booking = Booking.create!(
-  status: "En attente",
-  user: amael,
-  tool: scie,
-  start_date: "2024-06-15",
-  end_date: "2024-06-18"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617020/scie_xzzqe8.png")
-scie_booking.image.attach(io: file, filename: "scie.png", content_type: "image/png")
-scie_booking.save!
-
-tournevis_booking = Booking.create!(
-  status: "En attente",
-  user: aurelien,
-  tool: tournevis,
-  start_date: "2024-06-15",
-  end_date: "2024-06-18"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617015/tournvis_pxcsme.png")
-tournevis_booking.image.attach(io: file, filename: "tournvis.png", content_type: "image/png")
-tournevis_booking.save!
-
-perceuse_booking = Booking.create!(
-  status: "En attente",
-  user: jonathan,
-  tool: perceuse,
-  start_date: "2024-06-15",
-  end_date: "2024-06-18"
-)
-
-file = URI.open("https://res.cloudinary.com/du3ec0enc/image/upload/v1720617016/viceuse_pwm13v.png")
-perceuse_booking.image.attach(io: file, filename: "viceuse.png", content_type: "image/png")
-perceuse_booking.save!
+bookings.each do |booking_data|
+  booking = Booking.create!(status: booking_data[:status], user: booking_data[:user], tool: booking_data[:tool], start_date: booking_data[:start_date], end_date: booking_data[:end_date])
+  file = URI.open(booking_data[:image_url])
+  booking.image.attach(io: file, filename: "#{booking_data[:tool].name.downcase}.png", content_type: "image/png")
+  booking.save!
+end
