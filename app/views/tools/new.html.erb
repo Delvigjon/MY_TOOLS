@@ -17,6 +17,10 @@
             <div class="form-group mb-3" style="padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 15px;">
               <%= form.input :city, label: "Ville", class: 'form-control', style: 'border: none; font-family: "Roboto", sans-serif;' %>
             </div>
+             <div class="field">
+              <%= form.label :price_per_day %>
+              <%= form.number_field :price_per_day %> euros
+              </div>
 
             <div class="form-group mb-3" style="padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 15px;">
               <%= form.label :image, "Image", class: 'form-label' %>
